@@ -8,9 +8,9 @@ const ListadoEmpresas = () => {
 
   const getEmpresas = async () => {
     const empresasCollection = collection(connDataBase, 'empresas')
-    let data = await getDocs(empresasCollection)
-    console.log(data.docs.map((doc)=>(doc.data())))
-    setEmpresas(data.docs.map((doc)=>(doc.data())))
+    let info = await getDocs(empresasCollection)
+    console.log(info.docs)
+    setEmpresas(info.docs.map((doc)=>(doc.data())))
   }
   useEffect(()=>{
     getEmpresas()
