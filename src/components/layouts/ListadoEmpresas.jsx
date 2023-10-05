@@ -1,20 +1,23 @@
-import { connDataBase } from "../database/config-firebase";
-import {collection, getDocs} from 'firebase/firestore'
+import { collection, getDocs } from "firebase/firestore";
+import { dataBase } from "../database/config-firebase";
+import { useEffect, useState } from "react";
 import Header from "../helpers/Header";
-import { useState, useEffect } from "react";
 
 const ListadoEmpresas = () => {
-  const [empresas, setEmpresas] = useState([])
+  const [empresas, setEmpresas] = useState([]);
 
   const getEmpresas = async () => {
-    const empresasCollection = collection(connDataBase, 'empresas')
-    let info = await getDocs(empresasCollection)
-    console.log(info.docs)
-    setEmpresas(info.docs.map((doc)=>(doc.data())))
-  }
-  useEffect(()=>{
-    getEmpresas()
-  },[])  
+    const empresasCollection = collection(dataBase, "empresas");
+    const data = await getDocs(empresasCollection);
+    console.log(empresasCollection);
+    console.log(data);
+    setEmpresas(data.docs.map((doc) => doc.data()));
+    console.log(empresas)
+  };
+
+  useEffect(() => {
+    getEmpresas();
+  }, []);
 
   return (
     <section>
@@ -23,9 +26,9 @@ const ListadoEmpresas = () => {
         {
           empresas.map((empresa)=>(
             <section>
-              <p>Nombre empresa: {empresa.nombreEmpresa}</p>
-              <p>Direccion empresa: {empresa.direccionEmpresa}</p>
-              <p>Telefono gerente: {empresa.telefonoGerente}</p>
+              <p>{empresa.nombreEmpresa}</p>
+              <p>{empresa.direccionEmpresa}</p>
+              <p>{empresa.telefonoEmpresa}</p>
             </section>
           ))
         }

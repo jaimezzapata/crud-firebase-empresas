@@ -2,13 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from "@firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDGKTPLeJyEvi69JIIUFVNv5syU6Evze7w",
-  authDomain: "crud-empresas-firebase.firebaseapp.com",
-  projectId: "crud-empresas-firebase",
-  storageBucket: "crud-empresas-firebase.appspot.com",
-  messagingSenderId: "757391473123",
-  appId: "1:757391473123:web:ad07abc63c35998ad208d6",
+  apiKey: "AIzaSyCjbRkUiZ6u5VuP7M2XFgmuClEx28LrpPc",
+  authDomain: "crud-firebase-empresas.firebaseapp.com",
+  projectId: "crud-firebase-empresas",
+  storageBucket: "crud-firebase-empresas.appspot.com",
+  messagingSenderId: "556096004154",
+  appId: "1:556096004154:web:398cf733cb29672bef1503",
 };
 
 const app = initializeApp(firebaseConfig);
-export const connDataBase = getFirestore(app)
+export const dataBase = getFirestore(app)
+
