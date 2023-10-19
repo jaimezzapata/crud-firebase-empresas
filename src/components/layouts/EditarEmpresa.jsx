@@ -23,22 +23,22 @@ const EditarEmpresa = () => {
 
     const getEmpresaId = async (id) => {
         let empresaCollection = await getDoc(doc(dataBase, "empresas", id))
-        setNombreEmpresa(empresaCollection.doc().nombreEmpresa)
-        setDireccionEmpresa(empresaCollection.doc().direccionEmpresa)
-        setTelefonoGerente(empresaCollection.doc().telefonoEmpresa)
+        setNombreEmpresa(empresaCollection.data().nombreEmpresa)
+        setDireccionEmpresa(empresaCollection.data().direccionEmpresa)
+        setTelefonoGerente(empresaCollection.data().telefonoEmpresa)
     }
 
     useEffect(()=>{
         getEmpresaId(id)
-    })
+    }, [])
 
     return (
         <section>
             <Header />
             <form>
-                <input onChange={(e) => setNombreEmpresa(e.target.value)} placeholder="Nombre empresa" type="text" />
-                <input onChange={(e) => setDireccionEmpresa(e.target.value)} placeholder="Direccion empresa" type="text" />
-                <input onChange={(e) => setTelefonoGerente(e.target.value)} placeholder="Telefono Gerente" type="text" />
+                <input value={nombreEmpresa} onChange={(e) => setNombreEmpresa(e.target.value)} placeholder="Nombre empresa" type="text" />
+                <input value={direccionEmpresa} onChange={(e) => setDireccionEmpresa(e.target.value)} placeholder="Direccion empresa" type="text" />
+                <input value={telefonoEmpresa} onChange={(e) => setTelefonoGerente(e.target.value)} placeholder="Telefono Gerente" type="text" />
                 <button onClick={updateEmpresa} type="button">Agregar Empresa</button>
             </form>
         </section>
